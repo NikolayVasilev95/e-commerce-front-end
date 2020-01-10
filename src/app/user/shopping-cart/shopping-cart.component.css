@@ -1,0 +1,31 @@
+.ShoppingCard{
+    position: fixed;
+    top: 120px;
+    right: 0;
+}
+.ShoppingCardIcon{
+    position: fixed;
+    top: 80px;
+    right: 0;
+}
+.ItemCounter{
+    top: -18px;
+    right: 16px;
+    background-color: #4285f4;
+    font-size: 0.5em;
+    font-weight: 700;
+    line-height: 18px;
+    position: relative;
+    vertical-align: middle;
+    min-width: 20px;
+    height: 20px;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    border-radius: 10px;
+}
+@media only screen and (max-width: 576px){
+    .ItemCounter{
+        right: 16px;
+    }
+}

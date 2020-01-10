@@ -1,0 +1,55 @@
+<app-user-main-nav></app-user-main-nav>
+
+<div class="container">
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>{{ product.name }}</h1>
+              <h3>{{ product.brand }}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <!-- <img src="{{ productImages[product.id] }}" class="img-fluid" alt="Responsive image"> -->
+              <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Description</h4>
+              <p>{{ product.description }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Card -->
+          <div class="card">
+            <!-- Card Header -->
+            <div class="card-header">
+              <!-- Title -->
+              <h4 class="card-title">Price</h4>
+            </div>
+            <!-- Card content -->
+            <div class="card-body">
+              <!-- Text -->
+              <p class="card-text">
+                <span class="font-weight-bold font-italic text-success" style="font-size: 1.2em !important;">{{ product.price }}</span>
+                $
+              </p>
+              <!-- Button -->
+              <button class="btn btn-primary" (click)=addInCard(product.id)>Add To Cart</button>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-shopping-cart></app-shopping-cart>
+
+<app-user-footer></app-user-footer>

@@ -1,0 +1,281 @@
+<app-admin-main-nav></app-admin-main-nav>
+<!-- Main -->
+<main class="container-fluid my-2">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6" *ngIf="showSuccessMsg">
+      <div class="alert alert-success mt-2" role="alert">
+        {{ successMsg }}
+      </div>
+    </div>
+    <div class="col-md-6" *ngIf="showErrorMsg">
+      <div class="alert alert-danger mt-2" role="alert">
+        {{ errorMsg }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4 text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Category</h2>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal1">
+            ADD
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of allCategories">
+                  <th scope="row">{{ item.id }}</th>
+                  <td>{{ item.name }}</td>
+                  <td>
+                    <button type="button" class="view btn btn-outline-danger waves-effect"
+                      (click)="onClickDeleteCategory(item.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Subcategory</h2>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal2">
+            ADD
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Category ID</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of allSubcategories">
+                  <th scope="row">{{ item.id }}</th>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.categoryId }}</td>
+                  <td>
+                    <button type="button" class="view btn btn-outline-danger waves-effect"
+                      (click)="onClickDeleteSubcategory(item.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Product</h2>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal3">
+            ADD
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Subcategory ID</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of allProducts">
+                  <th scope="row">{{ item.id }}</th>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.brand }}</td>
+                  <td>{{ item.description }}</td>
+                  <td>{{ item.price }}</td>
+                  <td>{{ item.subcategoryID }}</td>
+                  <td>
+                    <button type="button" class="view btn btn-outline-danger waves-effect"
+                      (click)="onClickDeleteProduct(item.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</main>
+<!-- ./Main -->
+<app-admin-footer></app-admin-footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="row">
+      <div class="col-md-12" *ngIf="showSuccessMsg">
+        <div class="alert alert-success mt-2" role="alert">
+          {{ successMsg }}
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="showErrorMsg">
+        <div class="alert alert-danger mt-2" role="alert">
+          {{ errorMsg }}
+        </div>
+      </div>
+    </div>
+    <form #newCategory="ngForm" (ngSubmit)="addNewCategory(newCategory.value)" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="formCategoryName">Name</label>
+        <input type="text" id="formCategoryName" class="form-control" name="categoryName" ngModel required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="row">
+      <div class="col-md-12" *ngIf="showSuccessMsg">
+        <div class="alert alert-success mt-2" role="alert">
+          {{ successMsg }}
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="showErrorMsg">
+        <div class="alert alert-danger mt-2" role="alert">
+          {{ errorMsg }}
+        </div>
+      </div>
+    </div>
+    <form #newSubcategory="ngForm" (ngSubmit)="addNewSubcategory(newSubcategory.value)" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Subcategory</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="formSubcategoryName">Name</label>
+        <input type="text" id="formSubcategoryName" class="form-control mb-2" name="subcategoryName" ngModel required>
+        <select class="browser-default custom-select" id="category" name="category" #name="ngModel"
+          [(ngModel)]="selectedValue">
+          <option [ngValue]="selected" selected>Select Category</option>
+          <option *ngFor="let item of allCategories" [ngValue]="item.id">{{ item.name }}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="row">
+      <div class="col-md-12" *ngIf="showSuccessMsg">
+        <div class="alert alert-success mt-2" role="alert">
+          {{ successMsg }}
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="showErrorMsg">
+        <div class="alert alert-danger mt-2" role="alert">
+          {{ errorMsg }}
+        </div>
+      </div>
+    </div>
+    <form #newProduct="ngForm" (ngSubmit)="addNewPruduct(newProduct.value)" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="formName">Name</label>
+        <input type="text" id="formName" class="form-control mb-2" name="name" ngModel required>
+        <label for="formBrand">Brand</label>
+        <input type="text" id="formBrand" class="form-control mb-2" name="brand" ngModel required>
+        <label for="formDescription">Description</label>
+        <input type="text" id="formDescription" class="form-control  mb-2" name="description" ngModel required>
+        <label for="formPrice">Price</label>
+        <input type="text" id="formPrice" class="form-control mb-3" name="price" ngModel required>
+        <div class="row mb-3 d-flex justify-content-center">
+          <ngx-uploadcare-widget data-tabs="file" images-only="true" data-image-shrink="1920x1280 50%"
+            public-key="3a30fb8a687858ccbe26" (on-upload-complete)="onUpload($event)" (on-change)="onProgress($event)"
+            (on-progress)="onChange($event)">
+          </ngx-uploadcare-widget>
+        </div>
+        <select class="browser-default custom-select" id="subcategory" name="subcategory" #name="ngModel"
+          [(ngModel)]="selectedValue">
+          <option [ngValue]="selected" selected>Select Subcategory</option>
+          <option *ngFor="let item of allSubcategories" [ngValue]="item.id">{{ item.name }}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

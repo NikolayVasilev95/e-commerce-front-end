@@ -1,0 +1,100 @@
+<!-- NavBar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" routerLink="/">ECommerceApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/register">Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- ./NavBar -->
+<!-- Main -->
+<main class="container-fluid mt-2">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <!-- Card -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header bg-primary">
+                    <h2 class="text-white">Register</h2>
+                </div>
+                <!-- Card content -->
+                <div class="card-body">
+                    <form name="form" (ngSubmit)="f.form.valid && onRegisterClick()" #f="ngForm">
+                        <div class="form-group" [ngClass]="{ 'text-danger': f.submitted && !firstName.valid }">
+                            <input class="form-control" #firstName="ngModel" placeholder="Your first name" type="text"
+                                name="firstName" [(ngModel)]="model.firstName" required maxlength="30" minlength="4" />
+                            <div *ngIf="!firstName.valid" class="help-block">
+                                First Name is required and should be at least 4 characters long
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'text-danger': f.submitted && !lastName.valid }">
+                            <input class="form-control" placeholder="Your last name" type="text" name="lastName"
+                                [(ngModel)]="model.lastName" #lastName="ngModel" required maxlength="30"
+                                minlength="4" />
+                            <div *ngIf="f.submitted && !lastName.valid" class="help-block">
+                                Last Name is required and should be at least 4 characters long
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'text-danger': f.submitted && !username.valid }">
+                            <input class="form-control" placeholder="Your username" type="text" name="username"
+                                [(ngModel)]="model.username" #username="ngModel" required maxlength="30"
+                                minlength="4" />
+                            <div *ngIf="f.submitted && !username.valid" class="help-block">
+                                Username is required and should be at least 4 characters long
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'text-danger': f.submitted && !email.valid }">
+                            <input class="form-control" placeholder="Your email" type="email" name="email"
+                                [(ngModel)]="model.email" #email="ngModel" required
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+                            <div *ngIf="f.submitted && !email.valid && !email.pattern" class="help-block">
+                                Email is required or it's invalid
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'text-danger': f.submitted && !password.valid }">
+                            <input class="form-control" placeholder="Your password" type="password" name="password"
+                                [(ngModel)]="model.password" #password="ngModel" required maxlength="30"
+                                minlength="6" />
+                            <div *ngIf="f.submitted && !password.valid" class="help-block">
+                                Password is required and should be at least 6 characters long
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary">Register</button>
+                            <div *ngIf="f.submitted && (!firstName.valid || !lastName.valid || !username.valid || !email.valid || !password.valid)"
+                                class="alert alert-danger text-center">
+                                All Fields Are Required is required
+                            </div>
+                        </div>
+                        <div class="alert alert-success" *ngIf="successmsg">
+                            <strong>Well done!</strong> You have been successfully registered.
+                        </div>
+                        <div class="alert alert-danger" *ngIf="errormsg">
+                            Username or Email exist
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+    </div>
+</main>
+<!-- ./Main -->
+<!-- Footer -->
+<footer id="sticky-footer" class="py-4 bg-primary text-light fixed-bottom">
+    <div class="container text-center">
+        <small>&copy; 2018. All Rights Reserved by ECommerceApp</small>
+    </div>
+</footer>
+<!-- ./Footer -->

@@ -1,0 +1,47 @@
+<div class="ShoppingCardIcon text-danger mr-sm-0 mr-md-3">
+  <i class="fa fa-shopping-cart fa-2x" (click)="showCard($event)">
+    <span class="ItemCounter">{{ shoppingCartDetail.length }}</span>
+  </i>
+</div>
+
+<div class="col-6 col-md-2 ShoppingCard" *ngIf="showCards">
+  <!-- Card -->
+  <div class="card">
+    <!-- Card Header -->
+    <div class="card-header">
+      <!-- Title -->
+      <h4 class="mb-0">Shopping Card</h4>
+    </div>
+    <!-- Card content -->
+    <div class="card-body">
+      <p class="card-text">
+        <span class="text-dark">Total: $</span>
+        {{ totalPriceOutput }}
+      </p>
+      <hr>
+      <ul *ngFor="let item of shoppingCartDetail">
+        <li>
+          {{ item.products.name }} - {{ item.quantity }} pcs.
+          <span>
+            <button type="button" class="view btn btn-outline-danger waves-effect" (click)="onDeleteClick(item.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </span>
+        </li>
+      </ul>
+      <!-- Button -->
+      <button class="btn btn-primary" (click)="onCheckout($event)">Checkout</button>
+    </div>
+    <div class="container" *ngIf="showSucssesMsg">
+      <div class="alert alert-success mt-2" role="alert">
+        Your order was successfully received!
+      </div>
+    </div>
+    <div class="container" *ngIf="showErrorMsg">
+      <div class="alert alert-danger mt-2" role="alert">
+        {{ errorMsg }}
+      </div>
+    </div>
+  </div>
+  <!-- Card -->
+</div>

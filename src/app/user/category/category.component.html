@@ -1,0 +1,65 @@
+<app-user-main-nav></app-user-main-nav>
+
+<main class="container-fluid">
+  <div class="row d-flex justify-content-center mt-2">
+    <div class="col-md-3">
+      <div class="accordion" id="accordionName">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+              aria-controls="collapseOne">
+              Category Name<i class="fas fa-caret-down fa-pull-right"></i>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionName">
+            <div class="card-body">
+              <input type="text" class="form-control mb-2" placeholder="Search by category name....." (keyup)="onSearchByName($event)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-6 col-md-3 mb-3" *ngFor="let item of allCategories">
+          <!-- Card -->
+          <div class="card">
+            <a [routerLink]="['/subcategory', item.id]" class="view">
+              <img src="https://mdbootstrap.com/img/Photos/Others/forest-sm.jpg" class="img-fluid" alt="placeholder">
+              <div class="mask flex-center waves-effect waves-light rgba-teal-strong">
+                <p class="white-text">{{ item.name }}</p>
+              </div>
+            </a>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination pg-blue justify-content-center">
+              <li class="page-item">
+                <a class="page-link" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let item of allPages; let i = index">
+                <a class="page-link" (click)="setPage(i, $event)" [ngClass]="{'active': i==page}">{{ i }}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</main>
+
+<app-user-footer></app-user-footer>

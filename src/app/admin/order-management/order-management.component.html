@@ -1,0 +1,91 @@
+<app-admin-main-nav></app-admin-main-nav>
+<!-- Main -->
+<main class="container-fluid my-2">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 text-center">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+        <table class="table">
+          <thead class="table table-striped">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Data</th>
+              <th scope="col">Status</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let order of allOrders">
+            <tr>
+              <th scope="row">{{ order.id }}</th>
+              <td>{{ order.dateCreated }}</td>
+              <td> {{ order.status }}</td>
+              <td>
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight" (click)="onOrderDetail(order.id)">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</main>
+<!-- ./Main -->
+<app-admin-footer></app-admin-footer>
+
+<!-- Full Height Modal Right -->
+<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+
+  <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Order Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-md-12">
+            <p class="mb-0">{{ selectedOrder.dateCreated }}</p>
+            <hr>
+            <div class="row text-center">
+              <div class="col-md-4">
+                Name
+              </div>
+              <div class="col-md-4">
+                Price
+              </div>
+              <div class="col-md-4">
+                quantity
+              </div>
+            </div>
+            <div class="row text-center" *ngFor="let detail of selectedOrder.orderDetails">
+              <div class="col-md-4">
+                {{ detail.productName }}
+              </div>
+              <div class="col-md-4">
+                {{ detail.price }}
+              </div>
+              <div class="col-md-4">
+                {{ detail.quantity }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Full Height Modal Right -->
