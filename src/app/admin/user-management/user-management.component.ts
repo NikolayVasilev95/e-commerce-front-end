@@ -97,7 +97,8 @@ export class UserManagementComponent implements OnInit {
         roleName: this.selectedRoleData
       },
       {
-        observe: 'response'
+        observe: 'response',
+        withCredentials: true
       }
     ).subscribe(res => {
       console.log("Save res", res);
