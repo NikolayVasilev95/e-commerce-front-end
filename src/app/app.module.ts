@@ -25,7 +25,7 @@ import { SubcategoryComponent} from './user/subcategory/subcategory.component';
 import { RatingModule } from 'ng-starrating';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { ProductDetailComponent } from './user/product-detail/product-detail.component';
-import { NgxGalleryModule } from 'ngx-gallery';
+// import { NgxGalleryModule } from 'ngx-gallery';
 import { ShoppingCartComponent } from './user/shopping-cart/shopping-cart.component';
 
 @NgModule({
@@ -57,7 +57,7 @@ import { ShoppingCartComponent } from './user/shopping-cart/shopping-cart.compon
       Ng5SliderModule,
       RatingModule,
       UcWidgetModule,
-      NgxGalleryModule
+      // NgxGalleryModule
    ],
    providers: [AuthenticationService, AuthGuardAdmin, AuthGuardUser],
    bootstrap: [
