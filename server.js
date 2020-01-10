@@ -10,11 +10,11 @@ app.use(corss({
 }));
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/OnlyneStuding'));
+app.use(express.static(__dirname + '/dist/e-commerce-app'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/OnlyneStuding/index.html'));
+res.sendFile(path.join(__dirname+'/dist/e-commerce-app/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
