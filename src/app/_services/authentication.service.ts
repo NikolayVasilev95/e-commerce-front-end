@@ -13,7 +13,7 @@ export class AuthenticationService {
         body.set('username', username);
         body.set('password', password);
 
-        return this.http.post<any>('/api/login', body.toString(), { headers, observe: 'response' })
+        return this.http.post<any>('https://e-commerce-dev1.herokuapp.com/api/login', body.toString(), { headers, observe: 'response' })
             .pipe(map(resp => {
                 // login if response is successfull
                 if (resp.status === 200) {
@@ -33,7 +33,7 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        return this.http.get<any>('/api/logout').subscribe(res => {console.log(res)});
+        return this.http.get<any>('https://e-commerce-dev1.herokuapp.com/api/logout').subscribe(res => {console.log(res)});
     }
 }
 

@@ -1,7 +1,7 @@
 var HttpsProxyAgent = require('https-proxy-agent');
 var proxyConfig = [{
   context: '/api',
-  target: 'https://e-commerce-dev1.herokuapp.com',
+  target: 'http://localhost:8080/',
   secure: false
 }];
 
