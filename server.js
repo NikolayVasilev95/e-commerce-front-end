@@ -1,11 +1,11 @@
 //Install express server
 const express = require('express');
-const cors = require('cors');
+const corss = require('corss');
 const path = require('path');
 
 const app = express();
 
-app.use(cors({
+app.use(corss({
   origin: 'https://e-commerce-dev1.herokuapp.com'
 }));
 
