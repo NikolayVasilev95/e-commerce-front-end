@@ -36,7 +36,7 @@ export class ShoppingCartComponent implements OnInit {
 
   loadData() {
     this.http.get(
-      `/api/user/shopping-cart?userId=${this.user.id}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/shopping-cart?userId=${this.user.id}`
       ).subscribe(res => {
       console.log('Resp shoping Cart ', res);
       this.data = res;
@@ -68,7 +68,7 @@ export class ShoppingCartComponent implements OnInit {
     });
 
     this.http.post(
-      '/api/user/order/add',
+      'https://e-commerce-dev1.herokuapp.com/api/user/order/add',
       {
         products: order,
         userId: this.user.id
@@ -104,7 +104,7 @@ export class ShoppingCartComponent implements OnInit {
   onDeleteClick(id: any) {
     console.log(id);
     this.http.delete(
-      '/api/user/shopping-cart-details/delete',
+      'https://e-commerce-dev1.herokuapp.com/api/user/shopping-cart-details/delete',
       {
         headers: {},
         params: {

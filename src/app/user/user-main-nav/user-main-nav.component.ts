@@ -23,7 +23,7 @@ export class UserMainNavComponent implements OnInit {
 
   ngOnInit() {
     this.http.get<any>(
-      '/api/user/categories'
+      'https://e-commerce-dev1.herokuapp.com/api/user/categories'
     ).subscribe(res => {
       this.data = res;
       this.data.forEach(el => {

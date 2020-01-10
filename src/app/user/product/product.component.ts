@@ -71,7 +71,7 @@ export class ProductComponent implements OnInit {
 
   loadData() {
     this.http.get(
-      `/api/user/shopping-cart?userId=${this.user.id}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/shopping-cart?userId=${this.user.id}`
       ).subscribe(res => {
       this.shoppingData = res;
       this.shoppingCart = this.shoppingData;
@@ -79,7 +79,7 @@ export class ProductComponent implements OnInit {
       console.log('error ', err);
     });
 
-    this.http.get('/api/user/images').subscribe(res => {
+    this.http.get('https://e-commerce-dev1.herokuapp.com/api/user/images').subscribe(res => {
       console.log('Image res ', res);
       this.imageData = res;
       this.imageData.forEach(element => {
@@ -102,9 +102,9 @@ export class ProductComponent implements OnInit {
     this.getSubcategoryID = this.route.snapshot.params.id;
     this.http.get(
       this.productName != null ?
-        `/api/user/product-page?page=${this.page}&name=${this.productName}&subcategoryId=${this.getSubcategoryID}`
+        `https://e-commerce-dev1.herokuapp.com/api/user/product-page?page=${this.page}&name=${this.productName}&subcategoryId=${this.getSubcategoryID}`
         :
-        `/api/user/product-page?page=${this.page}&subcategoryId=${this.getSubcategoryID}`
+        `https://e-commerce-dev1.herokuapp.com/api/user/product-page?page=${this.page}&subcategoryId=${this.getSubcategoryID}`
     ).subscribe(res => {
       this.data = res;
       this.allPages = new Array(res['totalPages']);
@@ -127,7 +127,7 @@ export class ProductComponent implements OnInit {
     currentQuantity = isNumber(formdata.quantity) && formdata.quantity >= 1 ? formdata.quantity : 1;
 
     this.http.post(
-      '/api/user/shopping-cart-details/add',
+      'https://e-commerce-dev1.herokuapp.com/api/user/shopping-cart-details/add',
       {
         shoppingCart: {
           id: this.shoppingCart.id

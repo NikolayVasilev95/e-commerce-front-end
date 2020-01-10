@@ -34,9 +34,9 @@ export class SubcategoryComponent implements OnInit {
     this.getCategoryID = this.route.snapshot.params.id;
     this.http.get(
       this.subcategoryName!=null?
-      `/api/user/subcategory-page?page=${this.page}&name=${this.subcategoryName}&categoryId=${this.getCategoryID}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/subcategory-page?page=${this.page}&name=${this.subcategoryName}&categoryId=${this.getCategoryID}`
       :
-      `/api/user/subcategory-page?page=${this.page}&categoryId=${this.getCategoryID}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/subcategory-page?page=${this.page}&categoryId=${this.getCategoryID}`
     ).subscribe(res => {
       this.data = res;
       this.allPages = new Array(res['totalPages']);

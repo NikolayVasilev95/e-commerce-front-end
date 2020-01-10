@@ -30,9 +30,9 @@ export class CategoryComponent implements OnInit {
   loadData(){
     this.http.get(
       this.categoryName!=null?
-      `/api/user/category-page?page= ${this.page}&name=${this.categoryName}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/category-page?page= ${this.page}&name=${this.categoryName}`
       :
-      `/api/user/category-page?page= ${this.page}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/category-page?page= ${this.page}`
     ).subscribe(res => {
       this.data = res;
       this.allPages = new Array(res['totalPages']);

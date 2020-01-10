@@ -37,7 +37,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(
-      `/api/user/shopping-cart?userId=${this.user.id}`
+      `https://e-commerce-dev1.herokuapp.com/api/user/shopping-cart?userId=${this.user.id}`
       ).subscribe(res => {
       this.shoppingData = res;
       this.shoppingCart = this.shoppingData;
@@ -47,7 +47,7 @@ export class ProductDetailComponent implements OnInit {
 
     this.getProductID = this.route.snapshot.params.id;
     this.http.get(
-      '/api/user/product',
+      'https://e-commerce-dev1.herokuapp.com/api/user/product',
       {
         headers: {},
         params: {
@@ -61,7 +61,7 @@ export class ProductDetailComponent implements OnInit {
       console.log('error ', error);
     });
 
-    this.http.get('/api/user/images').subscribe(res => {
+    this.http.get('https://e-commerce-dev1.herokuapp.com/api/user/images').subscribe(res => {
       console.log('Image res ', res);
       this.imageData = res;
       this.imageData.forEach(element => {
@@ -131,7 +131,7 @@ export class ProductDetailComponent implements OnInit {
     currentQuantity = 1;
 
     this.http.post(
-      '/api/user/shopping-cart-details/add',
+      'https://e-commerce-dev1.herokuapp.com/api/user/shopping-cart-details/add',
       {
         shoppingCart: {
           id: this.shoppingCart.id

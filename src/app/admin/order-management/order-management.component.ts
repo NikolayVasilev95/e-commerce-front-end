@@ -25,7 +25,7 @@ export class OrderManagementComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(
-      '/api/admin/orders'
+      'https://e-commerce-dev1.herokuapp.com/api/admin/orders'
     ).subscribe(res => {
       this.data = res;
       this.allOrders = this.data;

@@ -37,7 +37,7 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(
-      '/api/admin/user-management'
+      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management'
     ).subscribe(res => {
       this.usersData = res;
       this.usersData.forEach(item => {
@@ -72,7 +72,7 @@ export class UserManagementComponent implements OnInit {
 
   onDeleteClick(id: any) {
     this.http.delete(
-      '/api/admin/user-management/delete',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management/delete',
       {
         headers: {},
         params: {
@@ -91,7 +91,7 @@ export class UserManagementComponent implements OnInit {
 
   onSaveClick(id: number) {
    this.http.post<any>(
-      '/api/admin/user-management/save',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management/save',
       {
         userId: id,
         roleName: this.selectedRoleData

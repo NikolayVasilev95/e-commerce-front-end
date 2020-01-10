@@ -34,7 +34,7 @@ export class ProductManagementComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(
-      '/api/admin/categories'
+      'https://e-commerce-dev1.herokuapp.com/api/admin/categories'
     ).subscribe(res => {
       this.data = res;
       this.data.forEach(element => {
@@ -64,7 +64,7 @@ export class ProductManagementComponent implements OnInit {
 
   addNewCategory(formdata: any) {
     this.http.post<any>(
-      '/api/admin/category/add',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/category/add',
       {
         name: formdata.categoryName
       },
@@ -94,7 +94,7 @@ export class ProductManagementComponent implements OnInit {
 
   addNewSubcategory(formdata: any) {
     this.http.post<any>(
-      '/api/admin/subcategory/add',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/subcategory/add',
       {
         name: formdata.subcategoryName,
         category: {
@@ -128,7 +128,7 @@ export class ProductManagementComponent implements OnInit {
   addNewPruduct(formdata: any) {
     console.log(formdata);
     this.http.post<any>(
-      '/api/admin/product/add',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/product/add',
       {
         name: formdata.name,
         brand: formdata.brand,
@@ -167,7 +167,7 @@ export class ProductManagementComponent implements OnInit {
 
   onClickDeleteCategory(id: any) {
     this.http.delete(
-      '/api/admin/category/delete',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/category/delete',
       {
         headers: {},
         params: {
@@ -196,7 +196,7 @@ export class ProductManagementComponent implements OnInit {
 
   onClickDeleteSubcategory(id: any) {
     this.http.delete(
-      '/api/admin/subcategory/delete',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/subcategory/delete',
       {
         headers: {},
         params: {
@@ -225,7 +225,7 @@ export class ProductManagementComponent implements OnInit {
 
   onClickDeleteProduct(id: any) {
     this.http.delete(
-      '/api/admin/product/delete',
+      'https://e-commerce-dev1.herokuapp.com/api/admin/product/delete',
       {
         headers: {},
         params: {
@@ -258,7 +258,7 @@ export class ProductManagementComponent implements OnInit {
     if (info.isStored = true) {
       console.log('test');
       this.http.post<any>(
-        '/api/admin/image/add',
+        'https://e-commerce-dev1.herokuapp.com/api/admin/image/add',
         {
           publicPath: info.cdnUrl
         },
