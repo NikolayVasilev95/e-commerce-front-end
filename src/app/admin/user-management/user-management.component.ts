@@ -37,7 +37,7 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(
-      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management'
+      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management',{withCredentials: true}
     ).subscribe(res => {
       this.usersData = res;
       this.usersData.forEach(item => {
@@ -97,8 +97,7 @@ export class UserManagementComponent implements OnInit {
         roleName: this.selectedRoleData
       },
       {
-        observe: 'response',
-        withCredentials: true
+        observe: 'response'
       }
     ).subscribe(res => {
       console.log("Save res", res);
