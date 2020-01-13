@@ -13,7 +13,7 @@ export class AuthenticationService {
         body.set('username', username);
         body.set('password', password);
 
-        return this.http.post<any>('https://e-commerce-dev1.herokuapp.com/api/login', body.toString(), { headers, observe: 'response' })
+        return this.http.post<any>('https://e-commerce-dev1.herokuapp.com/api/login', body.toString(), { headers, observe: 'response', withCredentials: true })
             .pipe(map(resp => {
                 // login if response is successfull
                 if (resp.status === 200) {

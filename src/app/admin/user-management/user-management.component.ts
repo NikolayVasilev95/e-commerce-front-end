@@ -37,7 +37,7 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(
-      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management',{withCredentials: true}
+      'https://e-commerce-dev1.herokuapp.com/api/admin/user-management'
     ).subscribe(res => {
       this.usersData = res;
       this.usersData.forEach(item => {
