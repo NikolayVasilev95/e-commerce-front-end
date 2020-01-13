@@ -34,6 +34,9 @@ export class UserMainNavComponent implements OnInit {
           this.subcategory.push({categoryId: el.id, id: element.id, name: element.name})
         });
       });
+      console.log('data ', this.data);
+      console.log('category ', this.category);
+      console.log('subcategory ', this.subcategory);
     }, error => {
       console.log("Category error ", error);
     });
