@@ -23,20 +23,17 @@ export class UserMainNavComponent implements OnInit {
 
   ngOnInit() {
     this.http.get<any>(
-      'https://e-commerce-dev1.herokuapp.com/api/user/categories',
-      { observe: 'response', withCredentials: true }
+      'https://e-commerce-dev1.herokuapp.com/api/user/categories'
     ).subscribe(res => {
-      console.log('res ', res);
-      this.data = res.body;
+      this.data = res;
       this.data.forEach(el => {
         this.category.push({ id: el.id, name: el.name })
         el.subcategories.forEach(element => {
           this.subcategory.push({categoryId: el.id, id: element.id, name: element.name})
         });
-      });
-      console.log('data ', this.data);
-      console.log('category ', this.category);
-      console.log('subcategory ', this.subcategory);
+      })
+      console.log("res ", res);
+      
     }, error => {
       console.log("Category error ", error);
     });

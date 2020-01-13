@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ng5SliderModule } from 'ng5-slider';
@@ -27,6 +27,7 @@ import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { ProductDetailComponent } from './user/product-detail/product-detail.component';
 // import { NgxGalleryModule } from 'ngx-gallery';
 import { ShoppingCartComponent } from './user/shopping-cart/shopping-cart.component';
+import { HttpRequestInterceptor } from './_services/HttpRequestInterceptor';
 
 @NgModule({
    declarations: [
@@ -59,7 +60,12 @@ import { ShoppingCartComponent } from './user/shopping-cart/shopping-cart.compon
       UcWidgetModule,
       // NgxGalleryModule
    ],
-   providers: [AuthenticationService, AuthGuardAdmin, AuthGuardUser],
+   providers: [
+      AuthenticationService,
+      AuthGuardAdmin,
+      AuthGuardUser,
+      { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
+   ],
    bootstrap: [
       AppComponent
    ]
