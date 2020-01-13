@@ -27,13 +27,13 @@ export class UserMainNavComponent implements OnInit {
       { observe: 'response', withCredentials: true }
     ).subscribe(res => {
       console.log('res ', res);
-      this.data = res;
-      // this.data.forEach(el => {
-      //   this.category.push({ id: el.id, name: el.name })
-      //   el.subcategories.forEach(element => {
-      //     this.subcategory.push({categoryId: el.id, id: element.id, name: element.name})
-      //   });
-      // });
+      this.data = res.body;
+      this.data.forEach(el => {
+        this.category.push({ id: el.id, name: el.name })
+        el.subcategories.forEach(element => {
+          this.subcategory.push({categoryId: el.id, id: element.id, name: element.name})
+        });
+      });
     }, error => {
       console.log("Category error ", error);
     });
