@@ -26,15 +26,14 @@ export class UserMainNavComponent implements OnInit {
       'https://e-commerce-dev1.herokuapp.com/api/user/categories',
       { observe: 'response', withCredentials: true }
     ).subscribe(res => {
+      console.log('res ', res);
       this.data = res;
-      this.data.forEach(el => {
-        this.category.push({ id: el.id, name: el.name })
-        el.subcategories.forEach(element => {
-          this.subcategory.push({categoryId: el.id, id: element.id, name: element.name})
-        });
-      })
-      console.log("res ", res);
-      
+      // this.data.forEach(el => {
+      //   this.category.push({ id: el.id, name: el.name })
+      //   el.subcategories.forEach(element => {
+      //     this.subcategory.push({categoryId: el.id, id: element.id, name: element.name})
+      //   });
+      // });
     }, error => {
       console.log("Category error ", error);
     });
